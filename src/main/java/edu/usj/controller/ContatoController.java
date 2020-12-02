@@ -17,7 +17,7 @@ public class ContatoController {
     @Autowired
     ContatoRepository contatoRepository;
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/index")
     public ModelAndView readListaContatos() {
         List<Contato> listaContatos = contatoRepository.findAll();
 
@@ -51,7 +51,7 @@ public class ContatoController {
     public String adicionarContato(Contato contato) {
 
         contatoRepository.save(contato);
-        return "redirect:/";
+        return "redirect:/index";
 
         // List<Contato> listaContatos = contatoRepository.findAll();
 
@@ -63,7 +63,7 @@ public class ContatoController {
     @GetMapping(value = "/deletar/{id}")
     public String deleteContatoById(@PathVariable Long id) {
         contatoRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping(value = "/editar/{id}")
